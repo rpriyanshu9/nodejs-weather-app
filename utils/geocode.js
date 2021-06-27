@@ -10,7 +10,7 @@ const getForwardGeocodingReq = async (cityName, callback) => {
             longitude: features[0].center[0]
         })
     } catch (error) {
-        callback("Something went wrong", undefined)
+        callback(`Something went wrong! Error message : ${error.response.data.message}`, undefined)
     }
 }
 

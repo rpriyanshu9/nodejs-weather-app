@@ -7,10 +7,11 @@ if (!cityName) {
     console.log("Please provide an address via command line.")
     console.log('Example: node app.js "New Delhi"')
 } else {
-    getForwardGeocodingReq(cityName, (error, { longitude, latitude }) => {
+    getForwardGeocodingReq(cityName, (error, coordinates) => {
         if (error) {
             return console.log(error)
         }
+        const { longitude, latitude } = coordinates
         getCurrentWeatherData(longitude, latitude, (err, data) => {
             if (err) {
                 return console.log(err)
@@ -20,7 +21,6 @@ if (!cityName) {
 
         })
     })
-
 }
 
 
