@@ -7,6 +7,7 @@ const getCurrentWeatherData = require('./utils/currentWeather')
 
 // Set up express app
 const app = express()
+const port = process.env.PORT || 3000
 
 // Set up ejs engine and views
 app.engine('ejs', engine)
@@ -86,6 +87,7 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log("Listening on 3000")
+app.listen(port, () => {
+    console.log("Listening on" + port)
 })
+
