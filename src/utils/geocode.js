@@ -6,17 +6,17 @@ const getForwardGeocodingReq = async (cityName, callback) => {
         const response = await axios.get(url)
         const { features } = response.data
         if (features.length === 0) {
-            return callback(`Something went wrong! Error message : Unable to find location. Try another search.`, undefined)
+            return callback(`Something went wrong! Unable to find location. Try another search.`, undefined)
         }
         else if (features[0].place_type[0] !== 'place') {
-            return callback(`Something went wrong! Error message : Unable to find location. Try another search.`, undefined)
+            return callback(`Something went wrong! Unable to find location. Try another search.`, undefined)
         }
         callback(undefined, {
             latitude: features[0].center[1],
             longitude: features[0].center[0]
         })
     } catch (error) {
-        callback(`Something went wrong! Error message : ${error.response.data.message}`, undefined)
+        callback(`Something went wrong! ${error.response.data.message}`, undefined)
     }
 }
 
