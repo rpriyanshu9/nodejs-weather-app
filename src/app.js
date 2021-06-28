@@ -47,9 +47,11 @@ app.get('/weather', (req, res) => {
             }
             const q = req.query.address
             const cityName = q[0].toUpperCase() + q.slice(1)
+            img_address = currentWeather.weather_icons[0]
             res.send({
                 forecast: `${currentWeather.weather_descriptions[0]} at ${currentWeather.observation_time}. It is ${currentWeather.temperature} degrees out, with ${currentWeather.humidity}% humidity.`,
                 location: `${cityName}, ${location.region}, ${location.country}`,
+                image_src: img_address,
                 address: cityName
             })
         })
